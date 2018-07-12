@@ -5,6 +5,7 @@ import ShoppingList from './components/shoppingList'
 import ItemModal from './components/ItemModal';
 import { Provider } from 'react-redux';
 import store from './store';
+import { Container } from 'reactstrap';
 
 
 
@@ -14,8 +15,10 @@ class App extends Component {
       <Provider store={store}>
       <div className="App">
         <AppNav />
+        <Container>
         <ItemModal />
         <ShoppingList />
+        </Container>
       </div>
       </Provider>
     );
