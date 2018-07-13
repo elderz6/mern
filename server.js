@@ -22,7 +22,7 @@ mongoose.connect(db)
 app.use('/api/items', items);
 
 //load static assets in production
-if (proccess.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
   //set static folder
   app.use(express.static('client/build'));
 
