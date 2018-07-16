@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Item Actions should get items 1`] = `
+Array [
+  Object {
+    "type": "ITEMS_LOADING",
+  },
+]
+`;
