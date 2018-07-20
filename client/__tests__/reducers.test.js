@@ -34,10 +34,6 @@ describe('item Reducer', ()=>
     .toEqual(adding)
     console.log(reducer(adding, actions.ADD_ITEM));
   });
-  it('should handle DELETE_ITEM', ()=>
-  {
-
-  });
   it('should handle loading items', ()=>
   {
     const demLoads = {

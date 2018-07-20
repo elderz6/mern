@@ -13,23 +13,31 @@ import { connect } from 'react-redux';
 import { addItem } from '../actions/itemActions';
 
 
-class ItemModal extends Component {
-  state = {
-    modal: false,
-    name: ''
-  };
+export class ItemModal extends Component {
 
-  toggle = () => {
+  constructor(props)
+  {
+    super(props);
+    this.state = {
+      modal: false,
+      name: ''
+    };
+    this.toggle = this.toggle.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  toggle() {
     this.setState({
       modal: !this.state.modal
     });
   };
 
-  onChange = e => {
+  onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  onSubmit = e => {
+  onSubmit(e) {
     e.preventDefault();
 
     const newItem = {

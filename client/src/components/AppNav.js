@@ -12,11 +12,17 @@ import {
 
 class AppNav extends Component
 {
-  state =
+  constructor(props)
   {
-    isOpen:false
+    super(props);
+    this.state =
+    {
+      isOpen:false
+    }
+    this.toggle = this.toggle.bind(this);
   }
-  toggle = () =>
+
+  toggle()
   {
     this.setState({
       isOpen:!this.state.isOpen
@@ -25,7 +31,7 @@ class AppNav extends Component
   render()
   {
     return(
-    <div>
+    <div className="jest">
       <Navbar color="dark" dark expand="sm" className="mb-5">
         <Container>
           <NavbarBrand href='/'>Shopping List</NavbarBrand>

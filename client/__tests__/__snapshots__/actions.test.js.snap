@@ -1,9 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Item Actions should get items 1`] = `
+exports[`Item Actions should start to get items 1`] = `Array []`;
+
+exports[`Item Actions should work async 1`] = `
 Array [
   Object {
-    "type": "ITEMS_LOADING",
+    "type": "GET_ITEMS",
   },
 ]
 `;
