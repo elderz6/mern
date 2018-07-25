@@ -7,8 +7,9 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Container
+  Container,
 } from 'reactstrap';
+import LogForm from './LogForm';
 
 class AppNav extends Component
 {
@@ -38,6 +39,9 @@ class AppNav extends Component
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
+              <NavItem>
+                <LogForm />
+              </NavItem>
               <NavItem>
                 <NavLink href='https://github.com/elderz6'>
                   GitHub

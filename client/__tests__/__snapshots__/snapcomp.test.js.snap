@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components with snapshot test should render correctly 1`] = `
+<div
+  className="jest"
+>
+  <Navbar
+    className="mb-5"
+    color="dark"
+    dark={true}
+    expand="sm"
+    tag="nav"
+  >
+    <Container
+      tag="div"
+    >
+      <NavbarBrand
+        href="/"
+        tag="a"
+      >
+        Shopping List
+      </NavbarBrand>
+      <NavbarToggler
+        onClick={[Function]}
+        tag="button"
+        type="button"
+      />
+      <Collapse
+        appear={false}
+        enter={true}
+        exit={true}
+        in={false}
+        isOpen={false}
+        mountOnEnter={false}
+        navbar={true}
+        onEnter={[Function]}
+        onEntered={[Function]}
+        onEntering={[Function]}
+        onExit={[Function]}
+        onExited={[Function]}
+        onExiting={[Function]}
+        tag="div"
+        timeout={350}
+        unmountOnExit={false}
+      >
+        <Nav
+          className="ml-auto"
+          navbar={true}
+          tag="ul"
+          vertical={false}
+        >
+          <NavItem
+            tag="li"
+          >
+            <LogForm />
+          </NavItem>
+          <NavItem
+            tag="li"
+          >
+            <NavLink
+              href="https://github.com/elderz6"
+              tag="a"
+            >
+              GitHub
+            </NavLink>
+          </NavItem>
+        </Nav>
+      </Collapse>
+    </Container>
+  </Navbar>
+</div>
+`;
