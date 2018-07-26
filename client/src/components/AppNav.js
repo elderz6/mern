@@ -9,7 +9,6 @@ import {
   NavLink,
   Container,
 } from 'reactstrap';
-import LogForm from './LogForm';
 
 class AppNav extends Component
 {

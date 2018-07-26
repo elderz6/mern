@@ -14,6 +14,7 @@ export const registerSuccess = () => {
 };
 
 export const registerFail = error => {
+  console.log('register failed');
   return{
     type:REGISTER_FAIL,
     error
@@ -28,5 +29,5 @@ export const registerUser = user => dispatch =>
       type:REGISTER_SUCCESS,
       payload:res.data
   }))
-  .catch(console.log('deu ruim'));
+  .catch('erro no register');
 };

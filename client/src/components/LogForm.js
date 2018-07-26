@@ -4,9 +4,6 @@ import {
     Input,
     Label,
     Button,
-    Modal,
-    ModalHeader,
-    ModalBody
 } from 'reactstrap';
 import RegisterForm from './RegisterForm';
 
