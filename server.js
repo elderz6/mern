@@ -5,6 +5,7 @@ const path = require('path');
 
 //api route setup
 const items = require('./routes/api/items');
+const users = require('./routes/api/users');
 
 //init app
 const app = express();
@@ -20,6 +21,8 @@ mongoose.connect(db)
   .catch(err => console.log(err));
 
 app.use('/api/items', items);
+app.use('/api/users', users);
+
 
 //load static assets in production
 if (process.env.NODE_ENV === 'production') {

@@ -9,9 +9,7 @@ export const getItems = () => dispatch =>
       dispatch({
         type:GET_ITEMS,
         payload: res.data
-      }))
-      .catch(console.log('deu ruim'))
-      //catch block
+      }));
 };
 
 export const deleteItem = id => dispatch =>

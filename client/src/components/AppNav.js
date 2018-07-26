@@ -40,9 +40,6 @@ class AppNav extends Component
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <LogForm />
-              </NavItem>
-              <NavItem>
                 <NavLink href='https://github.com/elderz6'>
                   GitHub
                 </NavLink>

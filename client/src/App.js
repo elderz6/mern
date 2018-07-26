@@ -6,6 +6,7 @@ import ItemModal from './components/ItemModal';
 import { Provider } from 'react-redux';
 import store from './store';
 import { Container } from 'reactstrap';
+import LogForm from './components/LogForm';
 
 class App extends Component {
   render() {
@@ -14,8 +15,7 @@ class App extends Component {
       <div className="App">
         <AppNav />
         <Container>
-        <ItemModal />
-        <ShoppingList />
+          <LogForm />
         </Container>
       </div>
       </Provider>

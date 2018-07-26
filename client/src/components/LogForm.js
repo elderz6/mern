@@ -11,73 +11,52 @@ import {
 import RegisterForm from './RegisterForm';
 
 
-const modStyle = {
-  display:'grid',
-  width:'50%',
-  margin:'auto',
-  borderRadius:'5px'
-}
-
 class LogForm extends Component
 {
   constructor(props)
   {
     super(props);
-      this.state =
-      {
-        modal:false
-      };
+      this.state = {visible:true,
+      display:'grid',
+      width:'50%',
+      margin:'auto'
+    };
       this.toggle = this.toggle.bind(this);
-
   }
+
   toggle()
   {
-    this.setState({
-      modal:!this.state.modal
-    });
-  };
+      this.setState({visible: !this.state.visible, display:'none'});
+  }
 
   render()
   {
     return(
       <div>
-        <Button  color='info' onClick={this.toggle}>
-          Login
-        </Button>
-
-        <Modal isOpen={this.state.modal} toggle={this.toggle}>
-          <ModalHeader toggle={this.toggle}>
-            Login
-          </ModalHeader>
-          <ModalBody>
-            <Form style={modStyle}>
+            <Form className='text-center' style={this.state}>
               <Label>
                 Username
                 <Input/>
               </Label>
               <br />
-
               <Label>
                 Password
                 <Input
                   type='password' />
               </Label>
               <br/>
-
               <Button outline color='primary'>
                 Login
               </Button>
               <br />
-              <div style={{margin:'auto'}}>
-                <RegisterForm />
-              </div>
-            </Form>
-          </ModalBody>
-        </Modal>
+              <Button outline color='success' onClick={this.toggle}>
+                Register
+              </Button>
+          </Form>
+          { !this.state.visible && <RegisterForm /> }
       </div>
     )
   }
-
 }
 
 export default LogForm

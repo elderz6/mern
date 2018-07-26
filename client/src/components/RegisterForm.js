@@ -8,6 +8,8 @@ import {
     ModalHeader,
     ModalBody
 } from 'reactstrap';
+import { connect } from 'react-redux';
+import { registerUser } from '../actions/registerActions';
 
 const modStyle = {
   display:'grid',
@@ -22,49 +24,58 @@ class RegisterForm extends Component
     super(props);
       this.state =
       {
-        modal:false
+        modal:false,
+          name:'',
+          password:'',
+          email:''
       };
       this.toggle = this.toggle.bind(this);
-
+      this.onChange = this.onChange.bind(this);
+      this.onSubmit = this.onSubmit.bind(this);
   }
+  onSubmit(e)
+  {
+    e.preventDefault();
+
+    const newUser = {
+      name:this.state.name,
+      password:this.state.password,
+      email:this.state.email
+    }
+    this.props.registerUser(newUser);
+    this.toggle();
+    console.log(newUser);
+    window.location.reload();
+  }
+
+  onChange(e)
+  {this.setState({[e.target.name]:e.target.value})};
+
   toggle()
   {
-    this.setState({
-      modal:!this.state.modal
-    });
+
   };
 
   render()
   {
     return(
       <div>
-        <Button outline color='success' onClick={this.toggle}>
-          Register
-        </Button>
-
-        <Modal isOpen={this.state.modal} toggle={this.toggle}>
-          <ModalHeader toggle={this.toggle}>
-            Register
-          </ModalHeader>
-          <ModalBody>
-            <Form style={modStyle}>
+        <Form onSubmit={this.onSubmit} style={modStyle}>
               <Label>
                 Username
-                <Input/>
+                <Input name='name' onChange={this.onChange}/>
               </Label>
               <br />
 
               <Label>
                 Email
-                <Input
-                  type='password' />
+                <Input name='email' onChange={this.onChange}/>
               </Label>
               <br/>
 
                 <Label>
                   Password
-                  <Input
-                    type='password' />
+                  <Input name='password' type='password' onChange={this.onChange}/>
                 </Label>
                 <br/>
 
@@ -79,11 +90,13 @@ class RegisterForm extends Component
                 Register
               </Button>
             </Form>
-          </ModalBody>
-        </Modal>
       </div>
     )
   }
 }
+const mapStateToProps = state => ({
+    user: state.user
+})
 
-export default RegisterForm
+export default connect(
+  mapStateToProps,{ registerUser })(RegisterForm);
