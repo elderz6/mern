@@ -19,6 +19,7 @@ const initialState =
   name:'',
   password:'',
   email:'',
+  passwordConfirmation:'',
   errors:{}
 };
 class RegisterForm extends Component
@@ -64,14 +65,19 @@ class RegisterForm extends Component
 
           <Label>
             Password
-            <Input name='password' type='password' onChange={this.onChange}/>
+            <Input name='password'
+              type='password'
+              onChange={this.onChange}/>
           </Label>
           <br/>
 
           <Label>
             Confirm  Password
             <Input
-              type='password' />
+              name='passwordConfirmation'
+              type='password'
+              onChange={this.onChange}
+               />
           </Label>
           <br/>
 

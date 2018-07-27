@@ -2,6 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
+const expressValidator = require('express-validator');
+const expressSession = require('express-session');
+
 
 //api route setup
 const items = require('./routes/api/items');
@@ -11,6 +14,13 @@ const users = require('./routes/api/users');
 const app = express();
 //bodyParser middleware
 app.use(bodyParser.json());
+app.use(expressValidator());
+app.use(expressSession(
+  {
+    secret:'brtao',
+    saveUninitialized:false,
+    resave:false
+  }));
 
 //mongo config
 const db = require('./config/keys').mongoURI;

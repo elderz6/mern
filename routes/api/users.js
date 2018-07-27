@@ -1,25 +1,33 @@
 const express = require('express');
-const validator = require('validator');
-
+const { check, body } = require('express-validator/check');
 const router = express.Router();
-
 const User = require('../../models/User');
 
-function validateInput(data)
-{
-  let errors = {};
-  if (validator.isNull(data.email)) {
-    errors.email = 'This field is required';
-  }
-  return{
-    errors,
-    isValid: isEmpty(errors)
-  }
-}
+router.post('/', [
+    check('email')
+    .isEmail().withMessage('Invalid Email')
+    .not()
+    .isEmpty().withMessage('This Field is Required')
+    .normalizeEmail(),
 
+    body('name')
+    .not()
+    .isEmpty().withMessage('This Field is Required'),
 
-router.post('/', (req, res) =>
+    check('passwordConfirmation').custom((value, { req })=>
+    {
+      if (value !== req.body.password) {
+        throw new Error('Passwords must match');
+      }
+    })
+],
+ (req, res) =>
 {
+  let errors = req.validationErrors();
+  if (errors) {
+    req.session.errors = errors;
+    console.log(errors);
+  }else {
   const newUser = new User({
     username:req.body.name,
     password:req.body.password,
@@ -28,6 +36,8 @@ router.post('/', (req, res) =>
   newUser.save()
   .then(user => res.json(user))
   .catch(err => res.status(400).json({success:false}))
+  res.redirect('/');
+}
 });
 
 module.exports = router;
