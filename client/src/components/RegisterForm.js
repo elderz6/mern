@@ -37,6 +37,7 @@ class RegisterForm extends Component
     const newUser = {
       name:this.state.name,
       password:this.state.password,
+      passwordConfirmation:this.state.passwordConfirmation,
       email:this.state.email
     }
     this.props.registerUser(newUser)
@@ -65,7 +66,8 @@ class RegisterForm extends Component
 
           <Label>
             Password
-            <Input name='password'
+            <Input
+              name='password'
               type='password'
               onChange={this.onChange}/>
           </Label>

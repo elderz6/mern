@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { REGISTER_START, REGISTER_LOAD, REGISTER_FAIL, REGISTER_SUCCESS} from './types';
+import { REGISTER_START, REGISTER_FAIL, REGISTER_SUCCESS} from './types';
 
 export const registerStart = () => {
   return {
@@ -13,11 +13,10 @@ export const registerSuccess = () => {
   }
 };
 
-export const registerFail = error => {
-  console.log('register failed');
+export const registerFail = errors => {
   return{
     type:REGISTER_FAIL,
-    error
+    errors
   }
 };
 
@@ -29,5 +28,8 @@ export const registerUser = user => dispatch =>
       type:REGISTER_SUCCESS,
       payload:res.data
   }))
-  .catch('erro no register');
+  .catch(() =>
+  {
+    console.log('erro');
+  });
 };

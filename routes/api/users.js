@@ -14,29 +14,25 @@ router.post('/', [
     .not()
     .isEmpty().withMessage('This Field is Required'),
 
-    check('passwordConfirmation').custom((value, { req })=>
-    {
-      if (value !== req.body.password) {
-        throw new Error('Passwords must match');
-      }
-    })
 ],
  (req, res) =>
 {
-  let errors = req.validationErrors();
-  if (errors) {
-    req.session.errors = errors;
-    console.log(errors);
-  }else {
   const newUser = new User({
     username:req.body.name,
     password:req.body.password,
     email:req.body.email
   });
+  let errors = req.validationErrors();
+  if (errors) {
+    req.session.errors = errors;
+    console.log(errors);
+    res.render('/', {errors:errors.mapped()})
+  }
+  else {
+  console.log(newUser);
   newUser.save()
   .then(user => res.json(user))
   .catch(err => res.status(400).json({success:false}))
-  res.redirect('/');
 }
 });
 
